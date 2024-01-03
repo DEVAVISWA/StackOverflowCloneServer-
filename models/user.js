@@ -8,7 +8,13 @@ const userSchema = new mongoose.Schema({
         type: Date,
         default: Date.now
     },
-    updatedAt: Date
+    updatedAt: Date,
+    questions : [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Question'
+        }
+    ]
 })
 
 const User= mongoose.model('User', userSchema, 'users')
