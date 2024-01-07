@@ -3,6 +3,7 @@ const { default: mongoose } = require("mongoose");
 const questionSchema = new mongoose.Schema({
     title: String,
     details: String,
+    tags: String,
     createdAt: {
         type: Date,
         default: Date.now

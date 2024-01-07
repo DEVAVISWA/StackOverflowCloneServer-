@@ -13,7 +13,7 @@ const getTokenFrom = req => {
 }
 
 questionRouter.post('/', async (req, res) => {
-    const { title, details } = req.body
+    const { title, details, tags } = req.body
     const token = getTokenFrom(req)
     const decodedToken = jwt.verify(token, JWT_SECRET)
     if (!token || !decodedToken.id) {
@@ -24,6 +24,7 @@ questionRouter.post('/', async (req, res) => {
     const question = new Question({
         title: title,
         details: details,
+        tags: tags,
         user: user._id
     })
     const savedQuestion = await question.save()
@@ -34,7 +35,7 @@ questionRouter.post('/', async (req, res) => {
 
 questionRouter.get('/', async (req, res) => {
     try {
-        const user = await Question.find()
+        const user = await Question.find()        
         res.json(user)
     } catch (e) {
         console.log(e)
