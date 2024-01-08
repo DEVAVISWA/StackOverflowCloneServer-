@@ -35,8 +35,9 @@ questionRouter.post('/', async (req, res) => {
 
 questionRouter.get('/', async (req, res) => {
     try {
-        const user = await Question.find()        
-        res.json(user)
+        const questions = await Question.find().populate('user')
+        // console.log(questions)        
+        res.json(questions)
     } catch (e) {
         console.log(e)
     }
