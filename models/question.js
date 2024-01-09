@@ -15,22 +15,22 @@ const questionSchema = new mongoose.Schema({
     votes: {
         type: Number,
         default: 0
-    }
-    // answer: [{
-    //     answerBody: String,
-    //     userId: {
-    //         type: mongoose.Schema.Types.ObjectId,
-    //         ref: 'User'
-    //     },
-    //     questionId: {
-    //         type: mongoose.Schema.Types.ObjectId,
-    //         ref: 'Question'
-    //     },
-    //     answeredOn: {
-    //         type: Date,
-    //         default: Date.now
-    //     }
-    // }]
+    },
+    answer: [{
+        answerBody: String,
+        userId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'User'
+        },
+        questionId: {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Question'
+        },
+        answeredOn: {
+            type: Date,
+            default: Date.now
+        }
+    }]
 })
 
 const Question = mongoose.model('Question', questionSchema, 'questions')
