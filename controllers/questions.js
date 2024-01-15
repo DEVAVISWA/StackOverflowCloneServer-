@@ -20,7 +20,6 @@ questionRouter.post('/', async (req, res) => {
         return res.status(401).json({ error: 'token is invalid or missing' })
     }
     const user = await User.findById(decodedToken.id)
-
     const question = new Question({
         title: title,
         details: details,
@@ -36,7 +35,6 @@ questionRouter.post('/', async (req, res) => {
 questionRouter.get('/', async (req, res) => {
     try {
         const questions = await Question.find().populate('user')
-        // console.log(questions)        
         res.json(questions)
     } catch (e) {
         console.log(e)
