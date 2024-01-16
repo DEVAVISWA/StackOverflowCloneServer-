@@ -12,6 +12,10 @@ app.use(cors())
 app.use(express.json())
 app.use(middleware.requestLogger)
 
+app.get('/', (req,res)=> {
+    res.send('<h2> StackOverflow Clone by Deva Viswa</h2>')
+})
+
 app.use('/signup', userRouter)
 app.use('/login',loginRouter)
 app.use('/ask', questionRouter)
